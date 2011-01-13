@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+use Proc::Daemon;
+use Readonly;
+use Cwd;
+use strict;
+
+Readonly my $PID => 'water_watchdog.pid';
+
+my $cwd = getcwd();
+
+my $daemon = Proc::Daemon->new(
+	work_dir     => $cwd,
+        pid_file     => $cwd . '/' .$PID,
+        exec_command => 'perl ./water_watchdog.pl'
+);
+
+$daemon->Init();

@@ -1,0 +1,7 @@
+check process water_watchdog.pl with pidfile /home/cnowicki/eau/water_watchdog.pid
+    	start program  = "/home/cnowicki/eau/water_watchdog.pl"
+
+check file water_watchdog.status with path /home/cnowicki/eau/water_watchdog.status
+	ignore match OK
+	if match ^KO then alert
+
